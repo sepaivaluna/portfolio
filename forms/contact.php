@@ -10,12 +10,13 @@
 
   if (isset($_POST['submit'])) {
     $from_name = $_POST['name'];
-    $from_email = $_POST['mail'];
-    $subject = $_POST['message'];
+    $from_email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
     
     $mailTo = "sepaivaluna@gmail.com";
     $headers = "From: ".$from_email;
-    $txt = "You have a message ".$name".\n\n".$message;
+    $txt = "The message is ".$subject;
 
     mail($mailTo, $name, $txt, $headers);
     header("Location: index.html?MessageSent");
