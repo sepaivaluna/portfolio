@@ -1,29 +1,12 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+  // /**
+  // * Requires the "PHP Email Form" library
+  // * The "PHP Email Form" library is available only in the pro version of the template
+  // * The library should be uploaded to: vendor/php-email-form/php-email-form.php
+  // * For more info and help: https://bootstrapmade.com/php-email-form/
+  // */
 
-  // Replace contact@example.com with your real receiving email address
-
-  if (isset($_POST['submit'])) {
-    $from_name = $_POST['name'];
-    $from_email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-    
-    $mailTo = "sepaivaluna@gmail.com";
-    $headers = "From: ".$from_email;
-    $txt = "The message is ".$subject;
-
-    mail($mailTo, $name, $txt, $headers);
-    header("Location: index.html?MessageSent");
-  }
-
-
-
+  // // Replace contact@example.com with your real receiving email address
   // $receiving_email_address = 'sepaivaluna@gmail.com';
 
   // if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
@@ -55,4 +38,20 @@
   // $contact->add_message( $_POST['message'], 'Message', 10);
 
   // echo $contact->send();
+
+  if(isset( $_POST['name']))
+  $name = $_POST['name'];
+  if(isset( $_POST['email']))
+  $email = $_POST['email'];
+  if(isset( $_POST['message']))
+  $message = $_POST['message'];
+  if(isset( $_POST['subject']))
+  $subject = $_POST['subject'];
+
+  $content="From: $name \n Email: $email \n Message: $message";
+  $recipient = "youremail@here.com";
+  $mailheader = "From: $email \r\n";
+  mail($recipient, $subject, $content, $mailheader) or die("Error!");
+  echo "Email sent!";
+
 ?>
